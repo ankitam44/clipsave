@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "Swipefile",
+    "slug": "swipefile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "swipefile",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#6C47FF",
+      "resizeMode": "contain"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.swipefile.app",
+      "infoPlist": {
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLName": "com.swipefile.app",
+            "CFBundleURLSchemes": ["swipefile"]
+          }
+        ]
+      }
+    },
+    "android": {
+      "package": "com.swipefile.app",
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "category": ["BROWSABLE", "DEFAULT"],
+          "data": [{ "scheme": "swipefile" }]
+        },
+        {
+          "action": "VIEW",
+          "autoVerify": false,
+          "category": ["BROWSABLE", "DEFAULT"],
+          "data": [{ "scheme": "https" }, { "scheme": "http" }]
+        },
+        {
+          "action": "SEND",
+          "category": ["DEFAULT"],
+          "data": [{ "mimeType": "text/plain" }]
+        }
+      ]
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single"
+    },
+    "plugins": [
+      "expo-router",
+      ["expo-notifications", { "color": "#6C47FF" }]
+    ],
+    "experiments": {
+      "tsconfigPaths": true
+    }
+  }
+}
