@@ -8,7 +8,7 @@ turns it into an actionable to-do list, and your saves surface in a swipe
 deck — right means "watched it, keep the to-dos," left means "archive it."
 A daily reminder nags you (affectionately) until the backlog hits zero.
 
-Built with React Native + Expo (SDK 51), Expo Router, Zustand, Reanimated 3,
+Built with React Native + Expo (SDK 54), Expo Router, Zustand, Reanimated 4,
 and AsyncStorage. Light mode, Plus Jakarta Sans, bouncy springs everywhere.
 
 ## Getting started

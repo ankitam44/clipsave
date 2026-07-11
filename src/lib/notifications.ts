@@ -9,7 +9,8 @@ export function configureNotificationHandling() {
   if (isWeb) return;
   Notifications.setNotificationHandler({
     handleNotification: async () => ({
-      shouldShowAlert: true,
+      shouldShowBanner: true,
+      shouldShowList: true,
       shouldPlaySound: false,
       shouldSetBadge: false,
     }),
@@ -62,9 +63,9 @@ export async function rescheduleDailyReminder(
       data: { screen: 'deck' },
     },
     trigger: {
+      type: Notifications.SchedulableTriggerInputTypes.DAILY,
       hour: settings.reminderHour,
       minute: settings.reminderMinute,
-      repeats: true,
       channelId: Platform.OS === 'android' ? 'reminders' : undefined,
     },
   });
@@ -81,6 +82,7 @@ export async function sendTestNotification(pendingCount: number): Promise<boolea
       data: { screen: 'deck' },
     },
     trigger: {
+      type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
       seconds: 3,
       channelId: Platform.OS === 'android' ? 'reminders' : undefined,
     },

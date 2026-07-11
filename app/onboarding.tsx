@@ -6,6 +6,7 @@ import Animated, {
   Extrapolation,
   FadeInDown,
   FadeInLeft,
+  type SharedValue,
   ZoomIn,
   interpolate,
   runOnJS,
@@ -369,7 +370,7 @@ export default function Onboarding() {
   );
 }
 
-function Dot({ index, scrollX, width }: { index: number; scrollX: Animated.SharedValue<number>; width: number }) {
+function Dot({ index, scrollX, width }: { index: number; scrollX: SharedValue<number>; width: number }) {
   const style = useAnimatedStyle(() => {
     const p = scrollX.value / width;
     return {
@@ -400,7 +401,7 @@ function OnboardingPage({
   index: number;
   width: number;
   height: number;
-  scrollX: Animated.SharedValue<number>;
+  scrollX: SharedValue<number>;
   title: string;
   body: string;
   cta: string;
