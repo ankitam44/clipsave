@@ -114,6 +114,7 @@ export default function RootLayout() {
             <Stack.Screen name="index" />
             <Stack.Screen name="onboarding" options={{ animation: 'fade' }} />
             <Stack.Screen name="deck" options={{ animation: 'slide_from_bottom' }} />
+            <Stack.Screen name="import" />
             <Stack.Screen name="item/[id]" />
             <Stack.Screen name="category/[name]" />
             <Stack.Screen name="settings" />

@@ -48,3 +48,18 @@ export function extractSharedUrl(incoming: string | null): string | null {
   if (!match) return null;
   return isIgnorable(match[1]) ? null : match[1];
 }
+
+/**
+ * Pull every content URL out of a pasted blob of text — the "I copied my
+ * whole saves folder" case. Trailing punctuation is stripped, dev/runtime
+ * hosts are skipped, and duplicates collapse to one.
+ */
+export function extractAllUrls(text: string): string[] {
+  const found = text.match(/(https?:\/\/[^\s"'<>]+)/gi) ?? [];
+  const urls: string[] = [];
+  for (const raw of found) {
+    const cleaned = raw.replace(/[),.;\]]+$/, '');
+    if (!isIgnorable(cleaned) && !urls.includes(cleaned)) urls.push(cleaned);
+  }
+  return urls;
+}

@@ -13,6 +13,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { LinearGradient } from 'expo-linear-gradient';
 import { AppText } from '@/components/AppText';
+import { Button } from '@/components/Button';
 import { PressableScale } from '@/components/PressableScale';
 import { Pill, PlatformBadge } from '@/components/Pill';
 import { SkeletonCard } from '@/components/Shimmer';
@@ -69,9 +70,14 @@ function Dashboard() {
         <View style={{ paddingHorizontal: 20, gap: 14 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
             <AppText v="title">Swipefile</AppText>
-            <PressableScale haptic onPress={() => router.push('/settings')} style={{ padding: 6 }}>
-              <AppText style={{ fontSize: 22 }}>⚙️</AppText>
-            </PressableScale>
+            <View style={{ flexDirection: 'row', gap: 4 }}>
+              <PressableScale haptic onPress={() => router.push('/import')} style={{ padding: 6 }}>
+                <AppText style={{ fontSize: 22 }}>🛟</AppText>
+              </PressableScale>
+              <PressableScale haptic onPress={() => router.push('/settings')} style={{ padding: 6 }}>
+                <AppText style={{ fontSize: 22 }}>⚙️</AppText>
+              </PressableScale>
+            </View>
           </View>
           <Animated.View entering={FadeInDown.springify()}>
             <AppText v="display">{greeting(hour, pending.length)}</AppText>
@@ -319,6 +325,7 @@ function StatCard({ label, value, emoji }: { label: string; value: number; emoji
 }
 
 function HomeEmptyState() {
+  const router = useRouter();
   const bounce = useSharedValue(0);
   useEffect(() => {
     bounce.value = withRepeat(
@@ -362,6 +369,9 @@ function HomeEmptyState() {
           <AppText style={{ fontSize: 16 }}>📤</AppText>
           <AppText v="caption">{homeEmpty.hint}</AppText>
         </View>
+      </Animated.View>
+      <Animated.View entering={FadeInDown.delay(220).springify()} style={{ alignSelf: 'stretch', marginTop: 22 }}>
+        <Button label="🛟 Or paste your whole saves folder" onPress={() => router.push('/import')} />
       </Animated.View>
     </View>
   );
