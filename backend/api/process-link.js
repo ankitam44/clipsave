@@ -124,8 +124,8 @@ module.exports = async (req, res) => {
         content: `Analyze this saved content and return a JSON object with exactly these fields:
 - summary: 2-3 concise sentences about what this is
 - keyTakeaways: array of 3-5 key points as plain strings
-- todos: array of 3-5 specific actionable tasks as objects { "text": "...", "done": false }
-- toolsMentioned: array of tools, apps, or products mentioned (empty array if none)
+- todos: array of 3-5 actionable tasks as plain strings (e.g. ["Watch this all the way through", "Take notes"])
+- toolsMentioned: array of objects { "name": "Tool Name", "url": "https://..." } for any tools/apps mentioned (empty array if none)
 - category: one of Design, Marketing, Dev, Business, Health, Finance, Productivity, Other
 
 Content to analyze:
