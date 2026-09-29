@@ -188,3 +188,53 @@ The product's own instrumentation implies what it considers success: shrinking t
 ("backlog zero"), sustained daily swiping (streaks), and to-dos actually getting checked off after
 a "keep" decision — not just more items saved. Saving is explicitly not the celebrated action;
 deciding and following through are.
+
+## 9. Waitlist landing page (planned)
+
+A public, browser-facing marketing page whose only job is to convert a visitor into a waitlist
+signup ahead of launch. This is new surface area, decided in scoping discussion on 2026-09-29 —
+not yet built.
+
+**Why it exists**: today the only public-facing thing this repo produces is the mobile app itself
+(behind onboarding) and an API-only backend that intentionally 404s at its root (see `PRD.md` §5
+and `CLAUDE.md`). There is nowhere for someone who hears about Swipefile to land, understand the
+pitch, and leave an email before the app is ready for them.
+
+**Scope decisions:**
+- **Implementation**: a standalone static page (plain HTML/CSS, no React Native/Expo), hand-built
+  to match the app's design language rather than reusing RN components — same visual language,
+  none of the RN-Web bundle weight. Pull tokens straight from `src/theme.ts` (colors, `radius`,
+  Plus Jakarta Sans typography, light-mode-only, bouncy spring-style motion) so it reads as the
+  same product, not a generic marketing template.
+- **Repo location**: a new top-level folder (e.g. `web/`), independent of both the Expo app
+  (`app/`, `src/`) and the existing backend (`backend/`) — its own minimal `package.json` if it
+  needs one, no shared build step with either.
+- **Hosting**: a new, separate Vercel project/domain, decoupled from the `clipsave` backend
+  project. No custom domain is picked yet — ship first to the default Vercel subdomain
+  (`<project-name>.vercel.app`); a custom domain can be pointed at it later without changing the
+  page itself.
+- **Content**: one page — hero headline + one-line pitch, three feature highlights below the fold
+  (share a link → AI turns it into a to-do list → swipe to decide), and an email capture form with
+  a single CTA button. No pricing, no screenshots/mockups, no FAQ in v1.
+- **Voice**: written in Swipefile's established self-aware, lightly-sarcastic tone (see
+  `src/lib/copy.ts` and PRD §3) — not generic startup-landing-page copy. Draft copy to build from:
+  - Hero: "Your saves are a graveyard. We're the exorcism." / "Save it. Swipe it. Actually do it."
+  - Sub-head: "Swipefile turns the links you save-and-forget into a to-do list, then makes you
+    swipe through it until it's zero. Join the waitlist before your backlog gets any bigger."
+  - Feature 1: "Share it in." — Any YouTube, Instagram, or TikTok link, straight from the share
+    sheet.
+  - Feature 2: "AI reads it for you." — Summary, key takeaways, and an actual to-do list, before
+    you've pressed play.
+  - Feature 3: "Swipe your way to zero." — Right to keep the to-dos, left to archive it. Both
+    count as progress.
+  - CTA button: "Join the waitlist" (or "Get in before the backlog does").
+  - Success state (post-submit): "You're on the list. We'll nag you exactly once, when it's ready."
+  - This copy is a draft for the eventual build to riff on, not final signed-off strings.
+- **Waitlist capture**: the email form submits to Google Sheets (e.g. via a Google Form embedded/
+  linked behind the CTA, or a lightweight Sheet-backed form endpoint) rather than a new database
+  or backend function in this repo. No new entry is needed in `backend/` for this — the page talks
+  directly to the Sheets integration.
+- **Out of scope for v1**: no cross-linking into the mobile app's account/data model (this is a
+  pre-signup marketing surface, unrelated to the local-first item storage in §6), no A/B testing,
+  no analytics beyond whatever the Sheets integration itself provides, no automated tests (matches
+  the rest of the repo's manual-verification approach per `CLAUDE.md`).
