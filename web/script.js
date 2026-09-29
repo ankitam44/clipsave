@@ -9,8 +9,8 @@
 // Until both are set, submissions are accepted locally (success state shows)
 // but nothing is recorded anywhere — a console warning says so.
 // ---------------------------------------------------------------------------
-const GOOGLE_FORM_ACTION_URL = 'REPLACE_WITH_YOUR_GOOGLE_FORM_FORMRESPONSE_URL';
-const GOOGLE_FORM_EMAIL_ENTRY = 'REPLACE_WITH_YOUR_EMAIL_ENTRY_ID';
+const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfLPUxgOz_YyKadlUkLIyhZcH6LkQjB1fEq7B8lIJkH-YbRNg/formResponse';
+const GOOGLE_FORM_EMAIL_ENTRY = '428826738';
 
 function looksLikeEmail(value) {
   const at = value.indexOf('@');
