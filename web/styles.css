@@ -1,0 +1,325 @@
+:root {
+  --color-bg: #FFFFFF;
+  --color-surface: #F7F7F8;
+  --color-primary: #6C47FF;
+  --color-primary-light: #9B7BFF;
+  --color-danger: #FF6B6B;
+  --color-success: #00C896;
+  --color-success-light: #4BE3B8;
+  --color-text: #0D0D0D;
+  --color-text-secondary: #666680;
+  --color-border: #EDEDF0;
+  --radius-card: 20px;
+  --radius-button: 12px;
+  --radius-pill: 100px;
+  --font: 'Plus Jakarta Sans', -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+/* An explicit `display` elsewhere in this sheet would otherwise win over the
+   browser's default [hidden]{display:none} at equal specificity. */
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { color: #5636D6; }
+
+.page { width: 100%; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+
+.container { width: 100%; max-width: 1160px; margin: 0 auto; padding-left: 40px; padding-right: 40px; }
+
+/* ---------- Nav ---------- */
+
+.nav { padding-top: 28px; padding-bottom: 28px; display: flex; align-items: center; justify-content: space-between; }
+
+.wordmark { font-weight: 800; font-size: 20px; color: var(--color-text); }
+
+.nav-cta {
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text) !important;
+  transition: border-color .15s ease, transform .15s ease;
+}
+.nav-cta:hover { border-color: var(--color-primary); transform: translateY(-1px); }
+
+/* ---------- Hero ---------- */
+
+.hero { padding-top: 48px; padding-bottom: 100px; }
+
+.hero-row { display: flex; align-items: center; gap: 64px; }
+
+.hero-copy { flex: 1 1 0; max-width: 560px; display: flex; flex-direction: column; gap: 24px; }
+
+.eyebrow-pill {
+  display: inline-flex;
+  align-self: flex-start;
+  background: rgba(108, 71, 255, .1);
+  border-radius: var(--radius-pill);
+  padding: 7px 16px;
+}
+.eyebrow-pill-text {
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.hero-headline {
+  margin: 0;
+  max-width: 547px;
+  font-weight: 800;
+  font-size: 56px;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.hero-sub {
+  margin: 0;
+  max-width: 480px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+}
+
+.hero-visual {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* Sized to comfortably contain the front card's rotated bounding box
+   (260x320 at -6deg ≈ 292x345) so the swipe hints below never overlap it. */
+.hero-cards { position: relative; width: 300px; height: 350px; }
+
+.mock-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.mock-card-back {
+  width: 240px;
+  height: 300px;
+  box-shadow: 0 20px 40px rgba(13, 13, 13, .08);
+  animation: sfFloatBack 5.6s ease-in-out infinite;
+}
+.mock-card-back-top { height: 90px; background: linear-gradient(135deg, var(--color-success), var(--color-success-light)); }
+
+.mock-card-front {
+  width: 260px;
+  height: 320px;
+  box-shadow: 0 24px 48px rgba(13, 13, 13, .14);
+  display: flex;
+  flex-direction: column;
+  animation: sfFloatFront 5s ease-in-out infinite;
+}
+
+.mock-card-top {
+  height: 96px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 10px;
+}
+.mock-badge {
+  background: #FF0000;
+  border-radius: var(--radius-pill);
+  padding: 4px 10px;
+  font-weight: 800;
+  font-size: 11px;
+  color: #FFFFFF;
+}
+
+.mock-card-body { flex: 1; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+.mock-category { font-weight: 400; font-size: 11px; color: var(--color-primary); }
+.mock-summary { flex: 1; font-weight: 500; font-size: 13px; line-height: 1.4; color: var(--color-text); }
+.mock-todos { font-weight: 400; font-size: 12px; color: var(--color-text-secondary); }
+
+.swipe-hints { display: flex; gap: 18px; white-space: nowrap; }
+.swipe-hint { font-weight: 800; font-size: 12px; }
+.swipe-hint-archive { color: var(--color-danger); }
+.swipe-hint-keep { color: var(--color-success); }
+
+@keyframes sfFloatFront {
+  0%, 100% { transform: translate(-50%, -50%) rotate(-6deg) translateY(0); }
+  50% { transform: translate(-50%, -50%) rotate(-6deg) translateY(-10px); }
+}
+@keyframes sfFloatBack {
+  0%, 100% { transform: translate(-50%, -50%) rotate(5deg) translateY(0); }
+  50% { transform: translate(-50%, -50%) rotate(5deg) translateY(-8px); }
+}
+
+/* ---------- Waitlist form ---------- */
+
+.waitlist-block { margin-top: 8px; }
+
+.waitlist-form { display: flex; flex-direction: column; gap: 10px; max-width: 440px; }
+.waitlist-row { display: flex; gap: 10px; }
+
+.input {
+  flex: 1 1 0;
+  min-width: 0;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-button);
+  padding: 15px 18px;
+  font-family: var(--font);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  outline: none;
+  transition: border-color .15s ease;
+}
+.input::placeholder { color: var(--color-text-secondary); }
+.input:focus { border-color: var(--color-primary); }
+
+.input-dark {
+  border-color: rgba(255, 255, 255, .35);
+  background: rgba(255, 255, 255, .08);
+  color: #FFFFFF;
+}
+.input-dark::placeholder { color: rgba(255, 255, 255, .65); }
+.input-dark:focus { border-color: #FFFFFF; }
+
+.btn {
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-button);
+  font-family: var(--font);
+  font-weight: 800;
+  font-size: 15px;
+  padding: 15px 24px;
+  white-space: nowrap;
+  background: var(--color-primary);
+  color: #FFFFFF;
+  transition: transform .12s ease, opacity .12s ease;
+}
+.btn:hover { opacity: .92; }
+.btn:active { transform: scale(.97); }
+
+.btn-light { background: #FFFFFF; color: var(--color-primary); }
+
+.form-error { font-size: 13px; color: var(--color-danger); }
+.form-error-dark { color: #FFFFFF; }
+.form-hint { font-size: 13px; color: var(--color-text-secondary); }
+
+.waitlist-success {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 440px;
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  padding: 18px 20px;
+}
+.success-check {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 20px;
+  background: var(--color-success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 800;
+}
+.success-copy { display: flex; flex-direction: column; gap: 2px; }
+.success-title { font-weight: 800; font-size: 15px; color: var(--color-text); }
+.success-body { font-size: 13px; color: var(--color-text-secondary); }
+
+.waitlist-success-dark { background: transparent; padding: 0; justify-content: center; }
+.success-check-dark { color: #FFFFFF; font-size: 18px; font-weight: 800; }
+.success-title-dark { font-weight: 600; font-size: 15px; color: #FFFFFF; }
+
+/* ---------- How it works ---------- */
+
+.features { padding-bottom: 100px; display: flex; flex-direction: column; gap: 44px; }
+
+.features-intro { display: flex; flex-direction: column; gap: 14px; max-width: 620px; }
+
+.eyebrow { font-weight: 800; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--color-text-secondary); }
+
+.features-heading { margin: 0; font-weight: 800; font-size: 34px; line-height: 1.2; color: var(--color-text); }
+
+.feature-row { display: flex; gap: 24px; }
+
+.feature-card {
+  flex: 1;
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.feature-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(13, 13, 13, .08); }
+
+.feature-icon { width: 44px; height: 44px; border-radius: 14px; display: flex; align-items: center; justify-content: center; }
+.feature-icon-primary { background: rgba(108, 71, 255, .12); }
+.feature-icon-success { background: rgba(0, 200, 150, .12); }
+.feature-icon-danger { background: rgba(255, 107, 107, .12); }
+
+.feature-title { font-weight: 800; font-size: 19px; color: var(--color-text); }
+.feature-body { font-weight: 500; font-size: 15px; line-height: 1.55; color: var(--color-text-secondary); }
+
+/* ---------- Final CTA ---------- */
+
+.cta-band {
+  background: var(--color-primary);
+  border-radius: 28px;
+  padding: 56px 48px;
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+.cta-heading { margin: 0; max-width: 480px; font-weight: 800; font-size: 32px; line-height: 1.2; color: #FFFFFF; }
+.cta-sub { margin: 0; max-width: 420px; font-weight: 500; font-size: 16px; color: rgba(255, 255, 255, .85); }
+
+.cta-waitlist { width: 100%; max-width: 440px; margin-top: 8px; }
+.cta-waitlist .waitlist-form { max-width: none; }
+
+/* ---------- Footer ---------- */
+
+.footer { padding-bottom: 48px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+.footer-wordmark { font-size: 14px; }
+.footer-tagline { font-weight: 400; font-size: 13px; color: var(--color-text-secondary); }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 880px) {
+  .container { padding-left: 20px; padding-right: 20px; }
+  .hero-row { flex-direction: column; }
+  .hero-copy { flex: none; max-width: 100%; }
+  .hero-headline { font-size: 40px; line-height: 1.15; max-width: 100%; }
+  .hero-visual { flex: none; margin-top: 40px; }
+  .feature-row { flex-direction: column; }
+  .waitlist-row { flex-direction: column; align-items: stretch; }
+  .cta-band { padding: 40px 28px; }
+}

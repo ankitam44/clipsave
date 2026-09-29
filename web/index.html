@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swipefile — join the waitlist</title>
+<meta name="description" content="Swipefile turns the links you save-and-forget into a to-do list, then makes you swipe through it until it's zero. Join the waitlist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="page">
+
+  <!-- NAV -->
+  <header class="container nav">
+    <span class="wordmark">🗂️⚡ Swipefile</span>
+    <a class="nav-cta" href="#waitlist">Join the waitlist</a>
+  </header>
+
+  <!-- HERO -->
+  <section class="container hero">
+    <div class="hero-row">
+
+      <div class="hero-copy">
+        <div class="eyebrow-pill"><span class="eyebrow-pill-text">Coming soon</span></div>
+
+        <h1 class="hero-headline">Your saves are a graveyard. Time to swipe your way out.</h1>
+
+        <p class="hero-sub">
+          Swipefile turns the links you save-and-forget into a to-do list, then makes you swipe
+          through it until it's zero. Join the waitlist before your backlog gets any bigger.
+        </p>
+
+        <div id="waitlist" class="waitlist-block">
+          <form class="waitlist-form" data-waitlist-form novalidate>
+            <div class="waitlist-row">
+              <input
+                class="input"
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                aria-label="Email address"
+                required
+              >
+              <button class="btn" type="submit">Join the waitlist</button>
+            </div>
+            <span class="form-error" data-form-error hidden></span>
+            <span class="form-hint">Free. One email when we launch. No spam — we hate it too.</span>
+          </form>
+
+          <div class="waitlist-success" data-waitlist-success hidden>
+            <div class="success-check">✓</div>
+            <div class="success-copy">
+              <span class="success-title">You're on the list.</span>
+              <span class="success-body">We'll nag you exactly once, when it's ready.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-cards">
+          <div class="mock-card mock-card-back">
+            <div class="mock-card-back-top"></div>
+          </div>
+
+          <div class="mock-card mock-card-front">
+            <div class="mock-card-top">
+              <span class="mock-badge">YT</span>
+            </div>
+            <div class="mock-card-body">
+              <span class="mock-category">Productivity</span>
+              <span class="mock-summary">A 12-minute video on shipping side projects without burning out.</span>
+              <span class="mock-todos">3 to-dos inside</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="swipe-hints">
+          <span class="swipe-hint swipe-hint-archive">← archive it</span>
+          <span class="swipe-hint swipe-hint-keep">keep the to-dos →</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="container features">
+    <div class="features-intro">
+      <span class="eyebrow">How it works</span>
+      <h2 class="features-heading">From saved-and-forgotten to done, in three swipes.</h2>
+    </div>
+
+    <div class="feature-row">
+
+      <div class="feature-card">
+        <div class="feature-icon feature-icon-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6C47FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a3 3 0 1 0-2.83-4H15a3 3 0 0 0 0 6 2.98 2.98 0 0 0 1.7-.53"></path><path d="M6 12a3 3 0 1 0 0 6 3 3 0 0 0 2.83-4"></path><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"></line></svg>
+        </div>
+        <span class="feature-title">Share it in.</span>
+        <span class="feature-body">Any YouTube, Instagram, or TikTok link — straight from your share sheet. Or paste a whole saves folder at once.</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon feature-icon-success">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C896" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"></path></svg>
+        </div>
+        <span class="feature-title">AI reads it for you.</span>
+        <span class="feature-body">A summary, the key takeaways, and an actual to-do list — before you've even pressed play.</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon feature-icon-danger">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7 3 12l4 5"></path><path d="M17 7l4 5-4 5"></path><line x1="3" y1="12" x2="21" y2="12"></line></svg>
+        </div>
+        <span class="feature-title">Swipe your way to zero.</span>
+        <span class="feature-body">Right to keep the to-dos. Left to archive it. Both count as progress — deciding is the whole point.</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="container">
+    <div class="cta-band">
+      <h2 class="cta-heading">Get in before the backlog does.</h2>
+      <p class="cta-sub">Be first to swipe when we launch. No backlog required to join — that's the whole point.</p>
+
+      <div class="waitlist-block cta-waitlist">
+        <form class="waitlist-form" data-waitlist-form novalidate>
+          <div class="waitlist-row">
+            <input
+              class="input input-dark"
+              type="email"
+              name="email"
+              placeholder="you@example.com"
+              aria-label="Email address"
+              required
+            >
+            <button class="btn btn-light" type="submit">Join the waitlist</button>
+          </div>
+          <span class="form-error form-error-dark" data-form-error hidden></span>
+        </form>
+
+        <div class="waitlist-success waitlist-success-dark" data-waitlist-success hidden>
+          <span class="success-check-dark">✓</span>
+          <span class="success-title-dark">You're in. We'll be in touch.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="container footer">
+    <span class="wordmark footer-wordmark">🗂️⚡ Swipefile</span>
+    <span class="footer-tagline">Save it. Swipe it. Actually do it.</span>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
